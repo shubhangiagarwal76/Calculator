@@ -10,108 +10,71 @@ namespace Calculator.ConsoleApp
 {
     class CalculatorDisplay
     {
-        double number1, number2;
+        
+       
 
         static void Main(string[] args)
         {
-
-            ArithmeticOperations operations = new ArithmeticOperations();
-            CalculatorDisplay obj = new CalculatorDisplay();
+            ResultCalculation calculation = new ResultCalculation();
             int option;
-            double result = 0;
+            String exit;
 
-            Console.WriteLine("***********"+Properties.StringResource.WelcomeMessage+ "***********");
-            Console.WriteLine("\t"+Properties.StringResource.Options);
-            Console.WriteLine("1." + Properties.StringResource.Add + "\n" + 
-                "2." + Properties.StringResource.Subtract + "\n" +
-                "3." + Properties.StringResource.Multiply + "\n" + 
-                "4." + Properties.StringResource.Divide + "\n" +
-                "5." + Properties.StringResource.Percent + "\n" + 
-                "6." + Properties.StringResource.Exponent + "\n" + 
-                "7." + Properties.StringResource.Sqrt + "\n" + 
-                "8." + Properties.StringResource.Log + "\n" + 
-                "9." + Properties.StringResource.Log10 + "\n" +
-                "10." + Properties.StringResource.Sin + "\n" + 
-                "11." + Properties.StringResource.Cos + "\n"+ 
-                "12." + Properties.StringResource.Tan);
-            Console.WriteLine("\t"+Properties.StringResource.Choice);
-            option = Int32.Parse(Console.ReadLine());
-            
-
-            switch(option)
+            do
             {
-                case 1:
-                    Input2Numbers(obj);
-                    result = operations.Add(obj.number1, obj.number2);
-                    break;
-                case 2:
-                    Input2Numbers(obj);
-                    result = operations.Subtract(obj.number1, obj.number2);
-                    break;
-                case 3:
-                    Input2Numbers(obj);
-                    result = operations.Multiply(obj.number1, obj.number2);
-                    break;
-                case 4:
-                    Input2Numbers(obj);
-                    result = operations.Divide(obj.number1, obj.number2);
-                    break;
-                case 5:
-                    Input2Numbers(obj);
-                    result = operations.Percentage(obj.number1, obj.number2);
-                    break;
-                case 6:
-                    Input2Numbers(obj);
-                    result = operations.Exponent(obj.number1, obj.number2);
-                    break;
-                case 7:
-                    Input1Number(obj);
-                    result = operations.SquareRoot(obj.number1);
-                    break;
-                case 8:
-                    Input1Number(obj);
-                    result = operations.LogBaseE(obj.number1);
-                    break;
-                case 9:
-                    Input1Number(obj);
-                    result = operations.LogBase10(obj.number1);
-                    break;
-                case 10:
-                    Input1Number(obj);
-                    result = operations.Sine(obj.number1);
-                    break;
-                case 11:
-                    Input1Number(obj);
-                    result = operations.Cosine(obj.number1);
-                    break;
-                case 12:
-                    Input1Number(obj);
-                    result = operations.Tangent(obj.number1);
-                    break;
-                default:
+                Console.Clear();
+                Console.WriteLine("***********" + Properties.StringResource.WelcomeMessage + "***********");
+                Console.WriteLine("\t" + Properties.StringResource.Options);
+                Console.WriteLine("1." + Properties.StringResource.BinaryOperations + "\n" + "2." + Properties.StringResource.UnaryOperations);
+                Console.Write(Properties.StringResource.Choice);
+                try
+                {
+         
+                    option = Int32.Parse(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("1." + Properties.StringResource.Add + "\n" +
+                           "2." + Properties.StringResource.Subtract + "\n" +
+                           "3." + Properties.StringResource.Multiply + "\n" +
+                           "4." + Properties.StringResource.Divide + "\n" +
+                           "5." + Properties.StringResource.Percent + "\n" +
+                           "6." + Properties.StringResource.Exponent);
+                            Console.Write("\t" + Properties.StringResource.Choice);
+                            option = Int32.Parse(Console.ReadLine());
+                            calculation.Input2Numbers(option);
+                            break;
+
+                        case 2:
+                            Console.WriteLine(
+                            "1." + Properties.StringResource.Sqrt + "\n" +
+                            "2." + Properties.StringResource.Log + "\n" +
+                            "3." + Properties.StringResource.Log10 + "\n" +
+                            "4." + Properties.StringResource.Sin + "\n" +
+                            "5." + Properties.StringResource.Cos + "\n" +
+                            "6." + Properties.StringResource.Tan);
+                            Console.Write("\t" + Properties.StringResource.Choice);
+                            option = Int32.Parse(Console.ReadLine());
+                            calculation.Input1Number(option);
+                            break;
+
+                        default:
+                            Console.WriteLine(Properties.StringResource.InvalidOption);
+                            break;
+                            
+                    }
+                   
+                    Console.WriteLine(Properties.StringResource.Result + calculation.result);
+
+
+                }
+                catch(FormatException e)
+                {
                     Console.WriteLine(Properties.StringResource.InvalidOption);
-                    break;
-            }
-
-            Console.WriteLine(Properties.StringResource.Result + result);
-
-
-           
-        }
-
-        static void Input2Numbers(CalculatorDisplay obj)
-        {
-           
-            Console.WriteLine(Properties.StringResource.Number1);
-            obj.number1 = Double.Parse(Console.ReadLine());
-            Console.WriteLine(Properties.StringResource.Number2);
-            obj.number2 = Double.Parse(Console.ReadLine());
-
-        }
-        static void Input1Number(CalculatorDisplay obj)
-        {
-            Console.WriteLine(Properties.StringResource.Number1);
-            obj.number1 = Double.Parse(Console.ReadLine());
+                }
+                Console.WriteLine(Properties.StringResource.Exit);
+                exit = Console.ReadLine();
+            } while(exit.Equals("1"));
+            Console.WriteLine(Properties.StringResource.GoodByeMessage);
         }
     }
 }

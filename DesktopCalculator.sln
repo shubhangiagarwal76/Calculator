@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.lib", "Calculato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.ConsoleApp", "Calculator.ConsoleApp\Calculator.ConsoleApp.csproj", "{07126D14-D597-4851-8E59-C41C35A5F83E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WindowsForm", "Calculator.WindowsForm\Calculator.WindowsForm.csproj", "{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07126D14-D597-4851-8E59-C41C35A5F83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07126D14-D597-4851-8E59-C41C35A5F83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07126D14-D597-4851-8E59-C41C35A5F83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

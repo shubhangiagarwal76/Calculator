@@ -70,7 +70,16 @@ namespace Calculator.ConsoleApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your choice.
+        ///   Looks up a localized string similar to Arithmetic Binary Operations.
+        /// </summary>
+        internal static string BinaryOperations {
+            get {
+                return ResourceManager.GetString("BinaryOperations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your choice: .
         /// </summary>
         internal static string Choice {
             get {
@@ -97,11 +106,29 @@ namespace Calculator.ConsoleApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you wish to exit? Press 1 otherwise 0.
+        /// </summary>
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exponent.
         /// </summary>
         internal static string Exponent {
             get {
                 return ResourceManager.GetString("Exponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thanks for using the application. See you soon!.
+        /// </summary>
+        internal static string GoodByeMessage {
+            get {
+                return ResourceManager.GetString("GoodByeMessage", resourceCulture);
             }
         }
         
@@ -138,6 +165,15 @@ namespace Calculator.ConsoleApp.Properties {
         internal static string Multiply {
             get {
                 return ResourceManager.GetString("Multiply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the Number: .
+        /// </summary>
+        internal static string Number {
+            get {
+                return ResourceManager.GetString("Number", resourceCulture);
             }
         }
         
@@ -187,7 +223,7 @@ namespace Calculator.ConsoleApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The result is:.
+        ///   Looks up a localized string similar to The result is: .
         /// </summary>
         internal static string Result {
             get {
@@ -228,6 +264,15 @@ namespace Calculator.ConsoleApp.Properties {
         internal static string Tan {
             get {
                 return ResourceManager.GetString("Tan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arithmetic Unary Operations.
+        /// </summary>
+        internal static string UnaryOperations {
+            get {
+                return ResourceManager.GetString("UnaryOperations", resourceCulture);
             }
         }
         
