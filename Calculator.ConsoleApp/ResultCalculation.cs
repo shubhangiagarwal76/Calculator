@@ -76,38 +76,6 @@ namespace Calculator.ConsoleApp
                      (option==6)? operations.Exponent(num1, num2): 0.0;
 
             //Can also use ternary to avoid switch case and if...if else
-
-            /*switch (option)
-            {
-                case 1:
-
-                    result = operations.Add(number1, number2);
-                    break;
-                case 2:
-
-                    result = operations.Subtract(number1, number2);
-                    break;
-                case 3:
-
-                    result = operations.Multiply(number1, number2);
-                    break;
-                case 4:
-
-                    result = operations.Divide(number1, number2);
-                    break;
-                case 5:
-
-                    result = operations.Percentage(number1, number2);
-                    break;
-                case 6:
-
-                    result = operations.Exponent(number1, number2);
-                    break;
-                default:
-                    Console.WriteLine(Properties.StringResource.InvalidOption);
-                    break;
-
-            }*/
             return result;
         }
         public double CalculateResult(int option, double num1)
@@ -118,30 +86,7 @@ namespace Calculator.ConsoleApp
                      (option == 4) ? operations.Sine(num1) :
                      (option == 5) ? operations.Cosine(num1) :
                      (option == 6) ? operations.Tangent(num1) : 0.0;
-            /*switch(option)
-            {
-                case 1:
-                    result = operations.SquareRoot(number1);
-                    break;
-                case 2:
-                    result = operations.LogBaseE(number1);
-                    break;
-                case 3:
-                    result = operations.LogBase10(number1);
-                    break;
-                case 4:
-                    result = operations.Sine(number1);
-                    break;
-                case 5:
-                    result = operations.Cosine(number1);
-                    break;
-                case 6:
-                    result = operations.Tangent(number1);
-                    break;
-                default:
-                    Console.WriteLine(Properties.StringResource.InvalidOption);
-                    break;
-            }*/
+           
             return result;
         }
     }
