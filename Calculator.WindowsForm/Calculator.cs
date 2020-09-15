@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +57,8 @@ namespace Calculator.WindowsForm
         private Button button14;
         private Button button4;
         private Button button5;
+        StringBuilder expression;
+        double result;
 
         public Calculator()
         {
@@ -67,7 +70,7 @@ namespace Calculator.WindowsForm
             
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(600, 561);
+            ClientSize = new Size(500, 561);
             Controls.Add(addTable2());
             Controls.Add(addTable1());
             Controls.Add(addTextBox());
@@ -146,14 +149,15 @@ namespace Calculator.WindowsForm
         {
             richTextBox1 = new TextBox();
             richTextBox1.Dock = DockStyle.Top;
-            richTextBox1.RightToLeft = RightToLeft.Yes;
+            //richTextBox1.RightToLeft = RightToLeft.Yes;
+            //richTextBox1.TextAlign = Right;
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.BackColor = Color.Black;
             richTextBox1.ForeColor = Color.White;
             richTextBox1.Location = new Point(0, 25);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(584, 96);
-            richTextBox1.Font = new Font("Segoe UI", 25F);
+            richTextBox1.Font = new Font("Segoe UI", 40F);
             richTextBox1.TabIndex = 1;
             richTextBox1.Text = "0";
             return richTextBox1;
@@ -287,6 +291,7 @@ namespace Calculator.WindowsForm
             button8.Size = new Size(110, 59);
             button8.TabIndex = 10;
             button8.Text = "MR";
+            button8.Margin = new Padding(1);
             button8.UseVisualStyleBackColor = false;
             // 
             // button16
@@ -392,7 +397,7 @@ namespace Calculator.WindowsForm
             button17.TabIndex = 19;
             button17.Text = "=";
             button17.UseVisualStyleBackColor = false;
-            //button17.Click += new System.EventHandler(button17_Click);
+            button17.Click += new System.EventHandler(button17_Click);
             // 
             // button20
             // 
@@ -672,8 +677,23 @@ namespace Calculator.WindowsForm
 
         }
 
-
+        private void button17_Click(object sender, EventArgs e)
+        {
+            result = 0;
+            expression = new StringBuilder(" ");
+            expression.Append(richTextBox1.Text);
+            try
+            {
+                ExpressionEvaluation exp = new ExpressionEvaluation();
+                result = exp.evaluate(expression.ToString());
+                richTextBox1.Text = result.ToString();
+            }
+            catch (Exception etc)
+            { richTextBox1.Text = etc.ToString(); }
         }
+
+
+    }
 
 
 
