@@ -24,41 +24,42 @@ namespace Calculator.WindowsForm
         private TextBox richTextBox1;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
-        private Button button8;
-        private Button button16;
-        private Button button28;
-        private Button button7;
-        private Button button31;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button11;
-        private Button button26;
-        private Button button34;
-        private Button button25;
-        private Button button6;
-        private Button button32;
-        private Button button30;
-        private Button button33;
-        private Button button29;
-        private Button button15;
-        private Button button9;
-        private Button button24;
-        private Button button27;
-        private Button button10;
-        private Button button23;
-        private Button button22;
-        private Button button21;
-        private Button button20;
-        private Button button19;
-        private Button button18;
-        private Button button17;
-        private Button button12;
-        private Button button14;
-        private Button button4;
-        private Button button5;
+        private Button buttonMR;
+        private Button buttonMS;
+        private Button buttonClear;
+        private Button buttonBackSpace;
+        private Button buttonMPlus;
+        private Button buttonOne;
+        private Button buttonTwo;
+        private Button buttonThree;
+        private Button buttonSqrt;
+        private Button buttonReciprocal;
+        private Button buttonTan;
+        private Button buttonFour;
+        private Button buttonCos;
+        private Button buttonNegate;
+        private Button buttonSin;
+        private Button buttonExp;
+        private Button buttonBracketO;
+        private Button buttonLog;
+        private Button buttonLn;
+        private Button buttonFive;
+        private Button buttonPercent;
+        private Button buttonBracketC;
+        private Button buttonSix;
+        private Button buttonMul;
+        private Button buttonSeven;
+        private Button buttonEight;
+        private Button buttonDec;
+        private Button buttonZero;
+        private Button buttonEquals;
+        private Button buttonDivide;
+        private Button buttonNine;
+        private Button buttonPlus;
+        private Button buttonMinus;
         StringBuilder expression;
         double result;
+        private bool flag;
 
         public Calculator()
         {
@@ -176,11 +177,11 @@ namespace Calculator.WindowsForm
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Controls.Add(button8, 0, 0);
-            tableLayoutPanel1.Controls.Add(button16, 1, 0);
-            tableLayoutPanel1.Controls.Add(button31, 2, 0);
-            tableLayoutPanel1.Controls.Add(button28, 3, 0);
-            tableLayoutPanel1.Controls.Add(button7, 4, 0);
+            tableLayoutPanel1.Controls.Add(buttonMR, 0, 0);
+            tableLayoutPanel1.Controls.Add(buttonMS, 1, 0);
+            tableLayoutPanel1.Controls.Add(buttonMPlus, 2, 0);
+            tableLayoutPanel1.Controls.Add(buttonClear, 3, 0);
+            tableLayoutPanel1.Controls.Add(buttonBackSpace, 4, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.BackColor = Color.Gray;
             tableLayoutPanel1.Location = new Point(0, 121);
@@ -206,34 +207,34 @@ namespace Calculator.WindowsForm
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28572F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28572F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.28572F));
-            tableLayoutPanel2.Controls.Add(button1, 2, 0);
-            tableLayoutPanel2.Controls.Add(button2, 3, 0);
-            tableLayoutPanel2.Controls.Add(button3, 4, 0);
-            tableLayoutPanel2.Controls.Add(button11, 0, 3);
-            tableLayoutPanel2.Controls.Add(button26, 6, 1);
-            tableLayoutPanel2.Controls.Add(button34, 0, 2);
-            tableLayoutPanel2.Controls.Add(button25, 2, 1);
-            tableLayoutPanel2.Controls.Add(button6, 0, 1);
-            tableLayoutPanel2.Controls.Add(button32, 1, 3);
-            tableLayoutPanel2.Controls.Add(button30, 0, 0);
-            tableLayoutPanel2.Controls.Add(button33, 1, 2);
-            tableLayoutPanel2.Controls.Add(button29, 6, 3);
-            tableLayoutPanel2.Controls.Add(button15, 1, 0);
-            tableLayoutPanel2.Controls.Add(button9, 1, 1);
-            tableLayoutPanel2.Controls.Add(button24, 3, 1);
-            tableLayoutPanel2.Controls.Add(button27, 6, 0);
-            tableLayoutPanel2.Controls.Add(button10, 6, 2);
-            tableLayoutPanel2.Controls.Add(button23, 4, 1);
-            tableLayoutPanel2.Controls.Add(button22, 2, 2);
-            tableLayoutPanel2.Controls.Add(button21, 3, 2);
-            tableLayoutPanel2.Controls.Add(button20, 4, 2);
-            tableLayoutPanel2.Controls.Add(button19, 2, 3);
-            tableLayoutPanel2.Controls.Add(button18, 3, 3);
-            tableLayoutPanel2.Controls.Add(button17, 4, 3);
-            tableLayoutPanel2.Controls.Add(button12, 5, 3);
-            tableLayoutPanel2.Controls.Add(button14, 5, 2);
-            tableLayoutPanel2.Controls.Add(button4, 5, 0);
-            tableLayoutPanel2.Controls.Add(button5, 5, 1);
+            tableLayoutPanel2.Controls.Add(buttonOne, 2, 0);
+            tableLayoutPanel2.Controls.Add(buttonTwo, 3, 0);
+            tableLayoutPanel2.Controls.Add(buttonThree, 4, 0);
+            tableLayoutPanel2.Controls.Add(buttonSqrt, 0, 3);
+            tableLayoutPanel2.Controls.Add(buttonReciprocal, 6, 1);
+            tableLayoutPanel2.Controls.Add(buttonTan, 0, 2);
+            tableLayoutPanel2.Controls.Add(buttonFour, 2, 1);
+            tableLayoutPanel2.Controls.Add(buttonCos, 0, 1);
+            tableLayoutPanel2.Controls.Add(buttonNegate, 1, 3);
+            tableLayoutPanel2.Controls.Add(buttonSin, 0, 0);
+            tableLayoutPanel2.Controls.Add(buttonExp, 1, 2);
+            tableLayoutPanel2.Controls.Add(buttonBracketO, 6, 3);
+            tableLayoutPanel2.Controls.Add(buttonLog, 1, 0);
+            tableLayoutPanel2.Controls.Add(buttonLn, 1, 1);
+            tableLayoutPanel2.Controls.Add(buttonFive, 3, 1);
+            tableLayoutPanel2.Controls.Add(buttonPercent, 6, 0);
+            tableLayoutPanel2.Controls.Add(buttonBracketC, 6, 2);
+            tableLayoutPanel2.Controls.Add(buttonSix, 4, 1);
+            tableLayoutPanel2.Controls.Add(buttonSeven, 2, 2);
+            tableLayoutPanel2.Controls.Add(buttonEight, 3, 2);
+            tableLayoutPanel2.Controls.Add(buttonNine, 4, 2);
+            tableLayoutPanel2.Controls.Add(buttonDec, 2, 3);
+            tableLayoutPanel2.Controls.Add(buttonZero, 3, 3);
+            tableLayoutPanel2.Controls.Add(buttonEquals, 4, 3);
+            tableLayoutPanel2.Controls.Add(buttonDivide, 5, 3);
+            tableLayoutPanel2.Controls.Add(buttonMul, 5, 2);
+            tableLayoutPanel2.Controls.Add(buttonPlus, 5, 0);
+            tableLayoutPanel2.Controls.Add(buttonMinus, 5, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.BackColor = Color.Gray;
             tableLayoutPanel2.Location = new Point(0, 186);
@@ -250,448 +251,479 @@ namespace Calculator.WindowsForm
         }
             void addButton()
             {
-            button8 = new Button();
-            button16 = new Button();
-            button28 = new Button();
-            button7 = new Button();
-            button31 = new Button();
-            button29 = new Button();
-            button30 = new Button();
-            button14 = new Button();
-            button12 = new Button();
-            button17 = new Button();
-            button20 = new Button();
-            button21 = new Button();
-            button18 = new Button();
-            button19 = new Button();
-            button22 = new Button();
-            button33 = new Button();
-            button32 = new Button();
-            button11 = new Button();
-            button34 = new Button();
-            button6 = new Button();
-            button9 = new Button();
-            button25 = new Button();
-            button24 = new Button();
-            button23 = new Button();
-            button5 = new Button();
-            button26 = new Button();
-            button27 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            button15 = new Button();
-            button10 = new Button();
+            buttonMR = new Button();
+            buttonMS = new Button();
+            buttonClear = new Button();
+            buttonBackSpace = new Button();
+            buttonMPlus = new Button();
+            buttonBracketO = new Button();
+            buttonSin = new Button();
+            buttonMul = new Button();
+            buttonDivide = new Button();
+            buttonEquals = new Button();
+            buttonNine = new Button();
+            buttonEight = new Button();
+            buttonZero = new Button();
+            buttonDec = new Button();
+            buttonSeven = new Button();
+            buttonExp = new Button();
+            buttonNegate = new Button();
+            buttonSqrt = new Button();
+            buttonTan = new Button();
+            buttonCos = new Button();
+            buttonLn = new Button();
+            buttonFour = new Button();
+            buttonFive = new Button();
+            buttonSix = new Button();
+            buttonMinus = new Button();
+            buttonReciprocal = new Button();
+            buttonPercent = new Button();
+            buttonPlus = new Button();
+            buttonThree = new Button();
+            buttonTwo = new Button();
+            buttonOne = new Button();
+            buttonLog = new Button();
+            buttonBracketC = new Button();
 
-            button8.BackColor = SystemColors.ButtonFace;
-            button8.Dock = DockStyle.Fill;
-            button8.Location = new Point(3, 3);
-            button8.Name = "button8";
-            button8.Size = new Size(110, 59);
-            button8.TabIndex = 10;
-            button8.Text = "MR";
-            button8.Margin = new Padding(1);
-            button8.UseVisualStyleBackColor = false;
-            // 
-            // button16
-            // 
-            button16.BackColor = SystemColors.ButtonFace;
-            button16.Dock = DockStyle.Fill;
-            button16.Location = new Point(119, 3);
-            button16.Name = "button16";
-            button16.Size = new Size(110, 59);
-            button16.TabIndex = 18;
-            button16.Text = "MS";
-            button16.UseVisualStyleBackColor = false;
-            // 
-            // button28
-            // 
-            button28.BackColor = SystemColors.ButtonFace;
-            button28.Dock = DockStyle.Fill;
-            button28.Location = new Point(351, 3);
-            button28.Name = "button28";
-            button28.Size = new Size(110, 59);
-            button28.TabIndex = 30;
-            button28.Text = "C/CE";
-            button28.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            button7.BackColor = SystemColors.ButtonFace;
-            button7.Dock = DockStyle.Fill;
-            button7.Location = new Point(467, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(114, 59);
-            button7.TabIndex = 34;
-            button7.Text = "<-";
-            button7.UseVisualStyleBackColor = false;
-            //button7.Click += new System.EventHandler(button7_Click);
-            // 
-            // button31
-            // 
-            button31.BackColor = SystemColors.ButtonFace;
-            button31.Dock = DockStyle.Fill;
-            button31.Location = new Point(235, 3);
-            button31.Name = "button31";
-            button31.Size = new Size(110, 59);
-            button31.TabIndex = 35;
-            button31.Text = "M+";
-            button31.UseVisualStyleBackColor = false;
-            // 
-            // button29
-            // 
-            button29.BackColor = SystemColors.ButtonFace;
-            button29.Dock = DockStyle.Fill;
-            button29.Location = new Point(501, 207);
-            button29.Name = "button29";
-            button29.Size = new Size(80, 65);
-            button29.TabIndex = 31;
-            button29.Text = "(";
-            button29.UseVisualStyleBackColor = false;
-            //button29.Click += new System.EventHandler(button29_Click);
-            // 
-            // button30
-            // 
-            button30.BackColor = SystemColors.ButtonFace;
-            button30.Dock = DockStyle.Fill;
-            button30.Location = new Point(3, 3);
-            button30.Name = "button30";
-            button30.Size = new Size(77, 62);
-            button30.TabIndex = 32;
-            button30.Text = "Sin";
-            button30.UseVisualStyleBackColor = false;
-            //button30.Click += new System.EventHandler(button30_Click);
-            // 
-            // button14
-            // 
-            button14.BackColor = SystemColors.ButtonFace;
-            button14.Dock = DockStyle.Fill;
-            button14.Location = new Point(418, 139);
-            button14.Name = "button14";
-            button14.Size = new Size(77, 62);
-            button14.TabIndex = 16;
-            button14.Text = "*";
-            button14.UseVisualStyleBackColor = false;
-            //button14.Click += new System.EventHandler(button14_Click);
-            // 
-            // button12
-            // 
-            button12.BackColor = SystemColors.ButtonFace;
-            button12.Dock = DockStyle.Fill;
-            button12.Location = new Point(418, 207);
-            button12.Name = "button12";
-            button12.Size = new Size(77, 65);
-            button12.TabIndex = 14;
-            button12.Text = "/";
-            button12.UseVisualStyleBackColor = false;
-            //button12.Click += new System.EventHandler(button12_Click);
-            // 
-            // button17
-            // 
-            button17.BackColor = SystemColors.ButtonFace;
-            button17.Dock = DockStyle.Fill;
-            button17.Location = new Point(335, 207);
-            button17.Name = "button17";
-            button17.Size = new Size(77, 65);
-            button17.TabIndex = 19;
-            button17.Text = "=";
-            button17.UseVisualStyleBackColor = false;
-            button17.Click += new System.EventHandler(button17_Click);
-            // 
-            // button20
-            // 
-            button20.BackColor = SystemColors.ButtonFace;
-            button20.Dock = DockStyle.Fill;
-            button20.Location = new Point(335, 139);
-            button20.Name = "button20";
-            button20.Size = new Size(77, 62);
-            button20.TabIndex = 22;
-            button20.Text = "9";
-            button20.UseVisualStyleBackColor = false;
-            //button20.Click += new System.EventHandler(button20_Click);
-            // 
-            // button21
-            // 
-            button21.BackColor = SystemColors.ButtonFace;
-            button21.Dock = DockStyle.Fill;
-            button21.Location = new Point(252, 139);
-            button21.Name = "button21";
-            button21.Size = new Size(77, 62);
-            button21.TabIndex = 23;
-            button21.Text = "8";
-            button21.UseVisualStyleBackColor = false;
-            //button21.Click += new System.EventHandler(button21_Click);
-            // 
-            // button18
-            // 
-            button18.BackColor = SystemColors.ButtonFace;
-            button18.Dock = DockStyle.Fill;
-            button18.Location = new Point(252, 207);
-            button18.Name = "button18";
-            button18.Size = new Size(77, 65);
-            button18.TabIndex = 20;
-            button18.Text = "0";
-            button18.UseVisualStyleBackColor = false;
-            //button18.Click += new System.EventHandler(button18_Click);
-            // 
-            // button19
-            // 
-            button19.BackColor = SystemColors.ButtonFace;
-            button19.Dock = DockStyle.Fill;
-            button19.Location = new Point(169, 207);
-            button19.Name = "button19";
-            button19.Size = new Size(77, 65);
-            button19.TabIndex = 21;
-            button19.Text = ".";
-            button19.UseVisualStyleBackColor = false;
-            //button19.Click += new System.EventHandler(button19_Click);
-            // 
-            // button22
-            // 
-            button22.BackColor = SystemColors.ButtonFace;
-            button22.Dock = DockStyle.Fill;
-            button22.Location = new Point(169, 139);
-            button22.Name = "button22";
-            button22.Size = new Size(77, 62);
-            button22.TabIndex = 24;
-            button22.Text = "7";
-            button22.UseVisualStyleBackColor = false;
-            //button22.Click += new System.EventHandler(button22_Click);
-            // 
-            // button33
-            // 
-            button33.BackColor = SystemColors.ButtonFace;
-            button33.Dock = DockStyle.Fill;
-            button33.Location = new Point(86, 139);
-            button33.Name = "button33";
-            button33.Size = new Size(77, 62);
-            button33.TabIndex = 37;
-            button33.Text = "Exp";
-            button33.UseVisualStyleBackColor = false;
-            //button33.Click += new System.EventHandler(button33_Click);
-            // 
-            // button32
-            // 
-            button32.BackColor = SystemColors.ButtonFace;
-            button32.Dock = DockStyle.Fill;
-            button32.Location = new Point(86, 207);
-            button32.Name = "button32";
-            button32.Size = new Size(77, 65);
-            button32.TabIndex = 36;
-            button32.Text = "+/-";
-            button32.UseVisualStyleBackColor = false;
-            //button32.Click += new System.EventHandler(button32_Click);
-            // 
-            // button11
-            // 
-            button11.BackColor = SystemColors.ButtonFace;
-            button11.Dock = DockStyle.Fill;
-            button11.Location = new Point(3, 207);
-            button11.Name = "button11";
-            button11.Size = new Size(77, 65);
-            button11.TabIndex = 13;
-            button11.Text = "Sqrt";
-            button11.UseVisualStyleBackColor = false;
-            //button11.Click += new System.EventHandler(button11_Click);
-            // 
-            // button34
-            // 
-            button34.BackColor = SystemColors.ButtonFace;
-            button34.Dock = DockStyle.Fill;
-            button34.Location = new Point(3, 139);
-            button34.Name = "button34";
-            button34.Size = new Size(77, 62);
-            button34.TabIndex = 38;
-            button34.Text = "Tan";
-            button34.UseVisualStyleBackColor = false;
-            //button34.Click += new System.EventHandler(button34_Click);
-            // 
-            // button6
-            // 
-            button6.BackColor = SystemColors.ButtonFace;
-            button6.Dock = DockStyle.Fill;
-            button6.Location = new Point(3, 71);
-            button6.Name = "button6";
-            button6.Size = new Size(77, 62);
-            button6.TabIndex = 33;
-            button6.Text = "Cos";
-            button6.UseVisualStyleBackColor = false;
-            //button6.Click += new System.EventHandler(button6_Click);
-            // 
-            // button9
-            // 
-            button9.BackColor = SystemColors.ButtonFace;
-            button9.Dock = DockStyle.Fill;
-            button9.Location = new Point(86, 71);
-            button9.Name = "button9";
-            button9.Size = new Size(77, 62);
-            button9.TabIndex = 11;
-            button9.Text = "ln";
-            button9.UseVisualStyleBackColor = false;
-            //button9.Click += new System.EventHandler(button9_Click);
-            // 
-            // button25
-            // 
-            button25.BackColor = SystemColors.ButtonFace;
-            button25.Dock = DockStyle.Fill;
-            button25.Location = new Point(169, 71);
-            button25.Name = "button25";
-            button25.Size = new Size(77, 62);
-            button25.TabIndex = 27;
-            button25.Text = "4";
-            button25.UseVisualStyleBackColor = false;
-            //button25.Click += new System.EventHandler(button25_Click);
-            // 
-            // button24
-            // 
-            button24.BackColor = SystemColors.ButtonFace;
-            button24.Dock = DockStyle.Fill;
-            button24.Location = new Point(252, 71);
-            button24.Name = "button24";
-            button24.Size = new Size(77, 62);
-            button24.TabIndex = 26;
-            button24.Text = "5";
-            button24.UseVisualStyleBackColor = false;
-            //button24.Click += new System.EventHandler(button24_Click);
-            // 
-            // button23
-            // 
-            button23.BackColor = SystemColors.ButtonFace;
-            button23.Dock = DockStyle.Fill;
-            button23.Location = new Point(335, 71);
-            button23.Name = "button23";
-            button23.Size = new Size(77, 62);
-            button23.TabIndex = 25;
-            button23.Text = "6";
-            button23.UseVisualStyleBackColor = false;
-            //button23.Click += new System.EventHandler(button23_Click);
-            // 
-            // button5
-            // 
-            button5.BackColor = SystemColors.ButtonFace;
-            button5.Dock = DockStyle.Fill;
-            button5.Location = new Point(418, 71);
-            button5.Name = "button5";
-            button5.Size = new Size(77, 62);
-            button5.TabIndex = 7;
-            button5.Text = "-";
-            button5.UseVisualStyleBackColor = false;
-            //button5.Click += new System.EventHandler(button5_Click);
-            // 
-            // button26
-            // 
-            button26.BackColor = SystemColors.ButtonFace;
-            button26.Dock = DockStyle.Fill;
-            button26.Location = new Point(501, 71);
-            button26.Name = "button26";
-            button26.Size = new Size(80, 62);
-            button26.TabIndex = 28;
-            button26.Text = "1/x";
-            button26.UseVisualStyleBackColor = false;
-            //button26.Click += new System.EventHandler(button26_Click);
-            // 
-            // button27
-            // 
-            button27.BackColor = SystemColors.ButtonFace;
-            button27.Dock = DockStyle.Fill;
-            button27.Location = new Point(501, 3);
-            button27.Name = "button27";
-            button27.Size = new Size(80, 62);
-            button27.TabIndex = 29;
-            button27.Text = "%";
-            button27.UseVisualStyleBackColor = false;
-            //button27.Click += new System.EventHandler(button27_Click);
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.ButtonFace;
-            button4.Dock = DockStyle.Fill;
-            button4.Location = new Point(418, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(77, 62);
-            button4.TabIndex = 6;
-            button4.Text = "+";
-            button4.UseVisualStyleBackColor = false;
-            //button4.Click += new System.EventHandler(button4_Click);
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.ButtonFace;
-            button3.Dock = DockStyle.Fill;
-            button3.Location = new Point(335, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(77, 62);
-            button3.TabIndex = 5;
-            button3.Text = "3";
-            button3.UseVisualStyleBackColor = false;
-            //button3.Click += new System.EventHandler(button3_Click);
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ButtonFace;
-            button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(252, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(77, 62);
-            button2.TabIndex = 4;
-            button2.Text = "2";
-            button2.UseVisualStyleBackColor = false;
-            //button2.Click += new System.EventHandler(button2_Click);
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ButtonFace;
-            button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(169, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(77, 62);
-            button1.TabIndex = 3;
-            button1.Text = "1";
-            button1.UseVisualStyleBackColor = false;
-            //button1.Click += new System.EventHandler(button1_Click);
-            // 
-            // button15
-            // 
-            button15.BackColor = SystemColors.ButtonFace;
-            button15.Dock = DockStyle.Fill;
-            button15.Location = new Point(86, 3);
-            button15.Name = "button15";
-            button15.Size = new Size(77, 62);
-            button15.TabIndex = 17;
-            button15.Text = "Log";
-            button15.UseVisualStyleBackColor = false;
-            //button15.Click += new System.EventHandler(button15_Click);
-            // 
-            // button10
-            // 
-            button10.BackColor = SystemColors.ButtonFace;
-            button10.Dock = DockStyle.Fill;
-            button10.Location = new Point(501, 139);
-            button10.Name = "button10";
-            button10.Size = new Size(80, 62);
-            button10.TabIndex = 12;
-            button10.Text = ")";
-            button10.UseVisualStyleBackColor = false;
-            //button10.Click += new System.EventHandler(button10_Click);
+            buttonMR.BackColor = SystemColors.ButtonFace;
+            buttonMR.Dock = DockStyle.Fill;
+            buttonMR.Location = new Point(3, 3);
+            buttonMR.Name = "buttonMR";
+            buttonMR.Size = new Size(110, 59);
+            buttonMR.TabIndex = 10;
+            buttonMR.Text = "MR";
+            buttonMR.Margin = new Padding(1);
+            buttonMR.UseVisualStyleBackColor = false;
+            // 
+            // buttonMS
+            // 
+            buttonMS.BackColor = SystemColors.ButtonFace;
+            buttonMS.Dock = DockStyle.Fill;
+            buttonMS.Location = new Point(119, 3);
+            buttonMS.Name = "buttonMS";
+            buttonMS.Size = new Size(110, 59);
+            buttonMS.TabIndex = 18;
+            buttonMS.Text = "MS";
+            buttonMS.UseVisualStyleBackColor = false;
+            // 
+            // buttonClear
+            // 
+            buttonClear.BackColor = SystemColors.ButtonFace;
+            buttonClear.Dock = DockStyle.Fill;
+            buttonClear.Location = new Point(351, 3);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(110, 59);
+            buttonClear.TabIndex = 30;
+            buttonClear.Text = "C/CE";
+            buttonClear.UseVisualStyleBackColor = false;
+            // 
+            // buttonBackSpace
+            // 
+            buttonBackSpace.BackColor = SystemColors.ButtonFace;
+            buttonBackSpace.Dock = DockStyle.Fill;
+            buttonBackSpace.Location = new Point(467, 3);
+            buttonBackSpace.Name = "buttonBackSpace";
+            buttonBackSpace.Size = new Size(114, 59);
+            buttonBackSpace.TabIndex = 34;
+            buttonBackSpace.Text = "<-";
+            buttonBackSpace.UseVisualStyleBackColor = false;
+            //buttonBackSpace.Click += new System.EventHandler(button7_Click);
+            // 
+            // buttonMPlus
+            // 
+            buttonMPlus.BackColor = SystemColors.ButtonFace;
+            buttonMPlus.Dock = DockStyle.Fill;
+            buttonMPlus.Location = new Point(235, 3);
+            buttonMPlus.Name = "buttonMPlus";
+            buttonMPlus.Size = new Size(110, 59);
+            buttonMPlus.TabIndex = 35;
+            buttonMPlus.Text = "M+";
+            buttonMPlus.UseVisualStyleBackColor = false;
+            // 
+            // buttonBracketO
+            // 
+            buttonBracketO.BackColor = SystemColors.ButtonFace;
+            buttonBracketO.Dock = DockStyle.Fill;
+            buttonBracketO.Location = new Point(501, 207);
+            buttonBracketO.Name = "buttonBracketO";
+            buttonBracketO.Size = new Size(80, 65);
+            buttonBracketO.TabIndex = 31;
+            buttonBracketO.Text = "(";
+            buttonBracketO.UseVisualStyleBackColor = false;
+            buttonBracketO.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonSin
+            // 
+            buttonSin.BackColor = SystemColors.ButtonFace;
+            buttonSin.Dock = DockStyle.Fill;
+            buttonSin.Location = new Point(3, 3);
+            buttonSin.Name = "buttonSin";
+            buttonSin.Size = new Size(77, 62);
+            buttonSin.TabIndex = 32;
+            buttonSin.Text = "Sin";
+            buttonSin.UseVisualStyleBackColor = false;
+            //buttonSin.Click += new System.EventHandler(button30_Click);
+            // 
+            // buttonMul
+            // 
+            buttonMul.BackColor = SystemColors.ButtonFace;
+            buttonMul.Dock = DockStyle.Fill;
+            buttonMul.Location = new Point(418, 139);
+            buttonMul.Name = "buttonMul";
+            buttonMul.Size = new Size(77, 62);
+            buttonMul.TabIndex = 16;
+            buttonMul.Text = "*";
+            buttonMul.UseVisualStyleBackColor = false;
+            buttonMul.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonDivide
+            // 
+            buttonDivide.BackColor = SystemColors.ButtonFace;
+            buttonDivide.Dock = DockStyle.Fill;
+            buttonDivide.Location = new Point(418, 207);
+            buttonDivide.Name = "buttonDivide";
+            buttonDivide.Size = new Size(77, 65);
+            buttonDivide.TabIndex = 14;
+            buttonDivide.Text = "/";
+            buttonDivide.UseVisualStyleBackColor = false;
+            buttonDivide.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonEquals
+            // 
+            buttonEquals.BackColor = SystemColors.ButtonFace;
+            buttonEquals.Dock = DockStyle.Fill;
+            buttonEquals.Location = new Point(335, 207);
+            buttonEquals.Name = "buttonEquals";
+            buttonEquals.Size = new Size(77, 65);
+            buttonEquals.TabIndex = 19;
+            buttonEquals.Text = "=";
+            buttonEquals.UseVisualStyleBackColor = false;
+            buttonEquals.Click += new System.EventHandler(button17_Click);
+            // 
+            // buttonNine
+            // 
+            buttonNine.BackColor = SystemColors.ButtonFace;
+            buttonNine.Dock = DockStyle.Fill;
+            buttonNine.Location = new Point(335, 139);
+            buttonNine.Name = "buttonNine";
+            buttonNine.Size = new Size(77, 62);
+            buttonNine.TabIndex = 22;
+            buttonNine.Text = "9";
+            buttonNine.UseVisualStyleBackColor = false;
+            buttonNine.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonEight
+            // 
+            buttonEight.BackColor = SystemColors.ButtonFace;
+            buttonEight.Dock = DockStyle.Fill;
+            buttonEight.Location = new Point(252, 139);
+            buttonEight.Name = "buttonEight";
+            buttonEight.Size = new Size(77, 62);
+            buttonEight.TabIndex = 23;
+            buttonEight.Text = "8";
+            buttonEight.UseVisualStyleBackColor = false;
+            buttonEight.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonZero
+            // 
+            buttonZero.BackColor = SystemColors.ButtonFace;
+            buttonZero.Dock = DockStyle.Fill;
+            buttonZero.Location = new Point(252, 207);
+            buttonZero.Name = "buttonZero";
+            buttonZero.Size = new Size(77, 65);
+            buttonZero.TabIndex = 20;
+            buttonZero.Text = "0";
+            buttonZero.UseVisualStyleBackColor = false;
+            buttonZero.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonDec
+            // 
+            buttonDec.BackColor = SystemColors.ButtonFace;
+            buttonDec.Dock = DockStyle.Fill;
+            buttonDec.Location = new Point(169, 207);
+            buttonDec.Name = "buttonDec";
+            buttonDec.Size = new Size(77, 65);
+            buttonDec.TabIndex = 21;
+            buttonDec.Text = ".";
+            buttonDec.UseVisualStyleBackColor = false;
+            buttonDec.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonSeven
+            // 
+            buttonSeven.BackColor = SystemColors.ButtonFace;
+            buttonSeven.Dock = DockStyle.Fill;
+            buttonSeven.Location = new Point(169, 139);
+            buttonSeven.Name = "buttonSeven";
+            buttonSeven.Size = new Size(77, 62);
+            buttonSeven.TabIndex = 24;
+            buttonSeven.Text = "7";
+            buttonSeven.UseVisualStyleBackColor = false;
+            buttonSeven.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonExp
+            // 
+            buttonExp.BackColor = SystemColors.ButtonFace;
+            buttonExp.Dock = DockStyle.Fill;
+            buttonExp.Location = new Point(86, 139);
+            buttonExp.Name = "buttonExp";
+            buttonExp.Size = new Size(77, 62);
+            buttonExp.TabIndex = 37;
+            buttonExp.Text = "^";
+            buttonExp.UseVisualStyleBackColor = false;
+            buttonExp.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonNegate
+            // 
+            buttonNegate.BackColor = SystemColors.ButtonFace;
+            buttonNegate.Dock = DockStyle.Fill;
+            buttonNegate.Location = new Point(86, 207);
+            buttonNegate.Name = "buttonNegate";
+            buttonNegate.Size = new Size(77, 65);
+            buttonNegate.TabIndex = 36;
+            buttonNegate.Text = "+/-";
+            buttonNegate.UseVisualStyleBackColor = false;
+            //buttonNegate.Click += new System.EventHandler(button32_Click);
+            // 
+            // buttonSqrt
+            // 
+            buttonSqrt.BackColor = SystemColors.ButtonFace;
+            buttonSqrt.Dock = DockStyle.Fill;
+            buttonSqrt.Location = new Point(3, 207);
+            buttonSqrt.Name = "buttonSqrt";
+            buttonSqrt.Size = new Size(77, 65);
+            buttonSqrt.TabIndex = 13;
+            buttonSqrt.Text = "Sqrt";
+            buttonSqrt.UseVisualStyleBackColor = false;
+            //buttonSqrt.Click += new System.EventHandler(button11_Click);
+            // 
+            // buttonTan
+            // 
+            buttonTan.BackColor = SystemColors.ButtonFace;
+            buttonTan.Dock = DockStyle.Fill;
+            buttonTan.Location = new Point(3, 139);
+            buttonTan.Name = "buttonTan";
+            buttonTan.Size = new Size(77, 62);
+            buttonTan.TabIndex = 38;
+            buttonTan.Text = "Tan";
+            buttonTan.UseVisualStyleBackColor = false;
+            //buttonTan.Click += new System.EventHandler(button34_Click);
+            // 
+            // buttonCos
+            // 
+            buttonCos.BackColor = SystemColors.ButtonFace;
+            buttonCos.Dock = DockStyle.Fill;
+            buttonCos.Location = new Point(3, 71);
+            buttonCos.Name = "buttonCos";
+            buttonCos.Size = new Size(77, 62);
+            buttonCos.TabIndex = 33;
+            buttonCos.Text = "Cos";
+            buttonCos.UseVisualStyleBackColor = false;
+            //buttonCos.Click += new System.EventHandler(button6_Click);
+            // 
+            // buttonLn
+            // 
+            buttonLn.BackColor = SystemColors.ButtonFace;
+            buttonLn.Dock = DockStyle.Fill;
+            buttonLn.Location = new Point(86, 71);
+            buttonLn.Name = "buttonLn";
+            buttonLn.Size = new Size(77, 62);
+            buttonLn.TabIndex = 11;
+            buttonLn.Text = "ln";
+            buttonLn.UseVisualStyleBackColor = false;
+            //buttonLn.Click += new System.EventHandler(button9_Click);
+            // 
+            // buttonFour
+            // 
+            buttonFour.BackColor = SystemColors.ButtonFace;
+            buttonFour.Dock = DockStyle.Fill;
+            buttonFour.Location = new Point(169, 71);
+            buttonFour.Name = "buttonFour";
+            buttonFour.Size = new Size(77, 62);
+            buttonFour.TabIndex = 27;
+            buttonFour.Text = "4";
+            buttonFour.UseVisualStyleBackColor = false;
+            buttonFour.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonFive
+            // 
+            buttonFive.BackColor = SystemColors.ButtonFace;
+            buttonFive.Dock = DockStyle.Fill;
+            buttonFive.Location = new Point(252, 71);
+            buttonFive.Name = "buttonFive";
+            buttonFive.Size = new Size(77, 62);
+            buttonFive.TabIndex = 26;
+            buttonFive.Text = "5";
+            buttonFive.UseVisualStyleBackColor = false;
+            buttonFive.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonSix
+            // 
+            buttonSix.BackColor = SystemColors.ButtonFace;
+            buttonSix.Dock = DockStyle.Fill;
+            buttonSix.Location = new Point(335, 71);
+            buttonSix.Name = "buttonSix";
+            buttonSix.Size = new Size(77, 62);
+            buttonSix.TabIndex = 25;
+            buttonSix.Text = "6";
+            buttonSix.UseVisualStyleBackColor = false;
+            buttonSix.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonMinus
+            // 
+            buttonMinus.BackColor = SystemColors.ButtonFace;
+            buttonMinus.Dock = DockStyle.Fill;
+            buttonMinus.Location = new Point(418, 71);
+            buttonMinus.Name = "buttonMinus";
+            buttonMinus.Size = new Size(77, 62);
+            buttonMinus.TabIndex = 7;
+            buttonMinus.Text = "-";
+            buttonMinus.UseVisualStyleBackColor = false;
+            buttonMinus.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonReciprocal
+            // 
+            buttonReciprocal.BackColor = SystemColors.ButtonFace;
+            buttonReciprocal.Dock = DockStyle.Fill;
+            buttonReciprocal.Location = new Point(501, 71);
+            buttonReciprocal.Name = "buttonReciprocal";
+            buttonReciprocal.Size = new Size(80, 62);
+            buttonReciprocal.TabIndex = 28;
+            buttonReciprocal.Text = "1/x";
+            buttonReciprocal.UseVisualStyleBackColor = false;
+            //buttonReciprocal.Click += new System.EventHandler(button26_Click);
+            // 
+            // buttonPercent
+            // 
+            buttonPercent.BackColor = SystemColors.ButtonFace;
+            buttonPercent.Dock = DockStyle.Fill;
+            buttonPercent.Location = new Point(501, 3);
+            buttonPercent.Name = "buttonPercent";
+            buttonPercent.Size = new Size(80, 62);
+            buttonPercent.TabIndex = 29;
+            buttonPercent.Text = "%";
+            buttonPercent.UseVisualStyleBackColor = false;
+            buttonPercent.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonPlus
+            // 
+            buttonPlus.BackColor = SystemColors.ButtonFace;
+            buttonPlus.Dock = DockStyle.Fill;
+            buttonPlus.Location = new Point(418, 3);
+            buttonPlus.Name = "buttonPlus";
+            buttonPlus.Size = new Size(77, 62);
+            buttonPlus.TabIndex = 6;
+            buttonPlus.Text = "+";
+            buttonPlus.UseVisualStyleBackColor = false;
+            buttonPlus.Click += new System.EventHandler(onButtonClickOperator);
+            // 
+            // buttonThree
+            // 
+            buttonThree.BackColor = SystemColors.ButtonFace;
+            buttonThree.Dock = DockStyle.Fill;
+            buttonThree.Location = new Point(335, 3);
+            buttonThree.Name = "buttonThree";
+            buttonThree.Size = new Size(77, 62);
+            buttonThree.TabIndex = 5;
+            buttonThree.Text = "3";
+            buttonThree.UseVisualStyleBackColor = false;
+            buttonThree.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonTwo
+            // 
+            buttonTwo.BackColor = SystemColors.ButtonFace;
+            buttonTwo.Dock = DockStyle.Fill;
+            buttonTwo.Location = new Point(252, 3);
+            buttonTwo.Name = "buttonTwo";
+            buttonTwo.Size = new Size(77, 62);
+            buttonTwo.TabIndex = 4;
+            buttonTwo.Text = "2";
+            buttonTwo.UseVisualStyleBackColor = false;
+            buttonTwo.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonOne
+            // 
+            buttonOne.BackColor = SystemColors.ButtonFace;
+            buttonOne.Dock = DockStyle.Fill;
+            buttonOne.Location = new Point(169, 3);
+            buttonOne.Name = "buttonOne";
+            buttonOne.Size = new Size(77, 62);
+            buttonOne.TabIndex = 3;
+            buttonOne.Text = "1";
+            buttonOne.UseVisualStyleBackColor = false;
+            buttonOne.Click += new System.EventHandler(onButtonClick);
+            // 
+            // buttonLog
+            // 
+            buttonLog.BackColor = SystemColors.ButtonFace;
+            buttonLog.Dock = DockStyle.Fill;
+            buttonLog.Location = new Point(86, 3);
+            buttonLog.Name = "buttonLog";
+            buttonLog.Size = new Size(77, 62);
+            buttonLog.TabIndex = 17;
+            buttonLog.Text = "Log";
+            buttonLog.UseVisualStyleBackColor = false;
+            //buttonLog.Click += new System.EventHandler(button15_Click);
+            // 
+            // buttonBracketC
+            // 
+            buttonBracketC.BackColor = SystemColors.ButtonFace;
+            buttonBracketC.Dock = DockStyle.Fill;
+            buttonBracketC.Location = new Point(501, 139);
+            buttonBracketC.Name = "buttonBracketC";
+            buttonBracketC.Size = new Size(80, 62);
+            buttonBracketC.TabIndex = 12;
+            buttonBracketC.Text = ")";
+            buttonBracketC.UseVisualStyleBackColor = false;
+            buttonBracketC.Click += new System.EventHandler(onButtonClickOperator);
 
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
             result = 0;
+            flag = true;
             expression = new StringBuilder(" ");
             expression.Append(richTextBox1.Text);
             try
             {
                 ExpressionEvaluation exp = new ExpressionEvaluation();
-                result = exp.evaluate(expression.ToString());
+                result = exp.Evaluate(expression.ToString());
                 richTextBox1.Text = result.ToString();
             }
             catch (Exception etc)
             { richTextBox1.Text = etc.ToString(); }
+            
         }
 
+        private void onButtonClickOperator(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            if ((richTextBox1.Text == "0" || richTextBox1.Text == "") && button.Text == "-")
+            {
+                richTextBox1.Text = "0 - ";
+                flag = false;
+            }
+            else if (flag == true)
+            {
+                richTextBox1.Text = richTextBox1.Text + " " + button.Text + " ";
+                flag = false;
+            }
+            else
+                richTextBox1.Text = richTextBox1.Text + " " + button.Text + " ";
+
+
+        }
+        private void onButtonClick(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            if (richTextBox1.Text == "0" || flag == true)
+            {
+                richTextBox1.Text = button.Text;
+                flag = false;
+            }
+            else
+                richTextBox1.Text = richTextBox1.Text + button.Text;
+        }
 
     }
 
