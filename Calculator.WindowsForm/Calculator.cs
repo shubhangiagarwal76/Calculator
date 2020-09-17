@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Calculator.WindowsForm
+namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
 {
     public partial class Calculator : Form
     {
@@ -67,9 +67,7 @@ namespace Calculator.WindowsForm
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-            
-            AutoScaleDimensions = new SizeF(6F, 13F);
+           AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(500, 561);
             Controls.Add(addTable2());
@@ -150,8 +148,6 @@ namespace Calculator.WindowsForm
         {
             richTextBox1 = new TextBox();
             richTextBox1.Dock = DockStyle.Top;
-            //richTextBox1.RightToLeft = RightToLeft.Yes;
-            //richTextBox1.TextAlign = Right;
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.BackColor = Color.Black;
             richTextBox1.ForeColor = Color.White;
@@ -164,9 +160,6 @@ namespace Calculator.WindowsForm
             return richTextBox1;
         }
         
-
-       
-
         TableLayoutPanel addTable1()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -316,6 +309,7 @@ namespace Calculator.WindowsForm
             buttonClear.TabIndex = 30;
             buttonClear.Text = "C/CE";
             buttonClear.UseVisualStyleBackColor = false;
+            buttonClear.Click += new EventHandler(ClearButton);
             // 
             // buttonBackSpace
             // 
@@ -362,7 +356,7 @@ namespace Calculator.WindowsForm
             buttonSin.TabIndex = 32;
             buttonSin.Text = "Sin";
             buttonSin.UseVisualStyleBackColor = false;
-            //buttonSin.Click += new System.EventHandler(button30_Click);
+            buttonSin.Click += new System.EventHandler(trigoClick);
             // 
             // buttonMul
             // 
@@ -494,7 +488,7 @@ namespace Calculator.WindowsForm
             buttonSqrt.TabIndex = 13;
             buttonSqrt.Text = "Sqrt";
             buttonSqrt.UseVisualStyleBackColor = false;
-            //buttonSqrt.Click += new System.EventHandler(button11_Click);
+            buttonSqrt.Click += new System.EventHandler(trigoClick);
             // 
             // buttonTan
             // 
@@ -506,7 +500,7 @@ namespace Calculator.WindowsForm
             buttonTan.TabIndex = 38;
             buttonTan.Text = "Tan";
             buttonTan.UseVisualStyleBackColor = false;
-            //buttonTan.Click += new System.EventHandler(button34_Click);
+            buttonTan.Click += new System.EventHandler(trigoClick);
             // 
             // buttonCos
             // 
@@ -518,7 +512,7 @@ namespace Calculator.WindowsForm
             buttonCos.TabIndex = 33;
             buttonCos.Text = "Cos";
             buttonCos.UseVisualStyleBackColor = false;
-            //buttonCos.Click += new System.EventHandler(button6_Click);
+            buttonCos.Click += new System.EventHandler(trigoClick);
             // 
             // buttonLn
             // 
@@ -530,7 +524,7 @@ namespace Calculator.WindowsForm
             buttonLn.TabIndex = 11;
             buttonLn.Text = "ln";
             buttonLn.UseVisualStyleBackColor = false;
-            //buttonLn.Click += new System.EventHandler(button9_Click);
+            buttonLn.Click += new System.EventHandler(trigoClick);
             // 
             // buttonFour
             // 
@@ -590,7 +584,7 @@ namespace Calculator.WindowsForm
             buttonReciprocal.TabIndex = 28;
             buttonReciprocal.Text = "1/x";
             buttonReciprocal.UseVisualStyleBackColor = false;
-            //buttonReciprocal.Click += new System.EventHandler(button26_Click);
+            buttonReciprocal.Click += new System.EventHandler(trigoClick);
             // 
             // buttonPercent
             // 
@@ -662,7 +656,7 @@ namespace Calculator.WindowsForm
             buttonLog.TabIndex = 17;
             buttonLog.Text = "Log";
             buttonLog.UseVisualStyleBackColor = false;
-            //buttonLog.Click += new System.EventHandler(button15_Click);
+            buttonLog.Click += new System.EventHandler(trigoClick);
             // 
             // buttonBracketC
             // 
@@ -725,9 +719,23 @@ namespace Calculator.WindowsForm
                 richTextBox1.Text = richTextBox1.Text + button.Text;
         }
 
+        private void ClearButton(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+        }
+
+        private void trigoClick(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            if (richTextBox1.Text == "0" || flag == true)
+            {
+                richTextBox1.Text = button.Text +  " ( ";
+                flag = false;
+            }
+            else
+                richTextBox1.Text = richTextBox1.Text + button.Text + " ( ";
+        }
+
     }
-
-
-
-   
+ 
 }

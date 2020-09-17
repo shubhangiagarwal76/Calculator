@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Calculator.ConsoleApp.Properties {
+namespace Grapecity.Internship.Assignment.Calculator.ConsoleApp.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Calculator.ConsoleApp.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Calculator.ConsoleApp.Properties.StringResource", typeof(StringResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Grapecity.Internship.Assignment.Calculator.ConsoleApp.Properties.StringResource", typeof(StringResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

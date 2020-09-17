@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator.lib
+namespace Grapecity.Internship.Assignment.Calculator.lib
 {
-
-    
     public class ArithmeticOperations
     {
-        public double Add(double num1, double num2)
+        public double Addition(double num1, double num2)
         {
             return num1 + num2;
         }

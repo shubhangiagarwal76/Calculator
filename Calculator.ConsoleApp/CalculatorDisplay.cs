@@ -1,4 +1,4 @@
-﻿using Calculator.lib;
+﻿using Grapecity.Internship.Assignment.Calculator.lib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Calculator.ConsoleApp
+
+namespace Grapecity.Internship.Assignment.Calculator.ConsoleApp
 {
     class CalculatorDisplay
     {
-        
-       
-
-        static void Main(string[] args)
-        {
+         static void Main(string[] args)
+         {
             ResultCalculation calculation = new ResultCalculation();
             int option;
             String exit;
@@ -28,7 +26,6 @@ namespace Calculator.ConsoleApp
                 Console.Write(Properties.StringResource.Choice);
                 try
                 {
-         
                     option = Int32.Parse(Console.ReadLine());
                     switch (option)
                     {
@@ -63,9 +60,7 @@ namespace Calculator.ConsoleApp
                             
                     }
                    
-                    Console.WriteLine(Properties.StringResource.Result + calculation.result);
-
-
+                    Console.WriteLine(Properties.StringResource.Result + calculation.Result);
                 }
                 catch(FormatException e)
                 {

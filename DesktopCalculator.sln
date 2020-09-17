@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.lib", "Calculator.lib\Calculator.lib.csproj", "{F0B833AE-5AAA-43C3-9D39-5ACB0E08704A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grapecity.Internship.Assignment.Calculator.lib", "Calculator.lib\Grapecity.Internship.Assignment.Calculator.lib.csproj", "{F0B833AE-5AAA-43C3-9D39-5ACB0E08704A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.ConsoleApp", "Calculator.ConsoleApp\Calculator.ConsoleApp.csproj", "{07126D14-D597-4851-8E59-C41C35A5F83E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grapecity.Internship.Assignment.Calculator.ConsoleApp", "Calculator.ConsoleApp\Grapecity.Internship.Assignment.Calculator.ConsoleApp.csproj", "{07126D14-D597-4851-8E59-C41C35A5F83E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.WindowsForm", "Calculator.WindowsForm\Calculator.WindowsForm.csproj", "{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grapecity.Internship.Assignment.Calculator.WindowsForm", "Calculator.WindowsForm\Grapecity.Internship.Assignment.Calculator.WindowsForm.csproj", "{CC6EC82A-DEE3-47BB-A0F8-D4D5299826E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

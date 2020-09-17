@@ -1,4 +1,4 @@
-﻿namespace Calculator.WindowsForm
+﻿namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
 {
     partial class Calculator
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Calculator.WindowsForm
+namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
 {
     static class Program
     {

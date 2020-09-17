@@ -1,129 +1,134 @@
-﻿using Calculator.lib;
+﻿using Grapecity.Internship.Assignment.Calculator.lib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator.WindowsForm
+namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
 {
     class ExpressionEvaluation
     {
         public double Evaluate(string expression)
         {
-            string[] tokens = expression.TrimStart(' ').TrimEnd(' ').Split(' ');
+            string[] Tokens = expression.TrimStart(' ').TrimEnd(' ').Split(' ');
+  
+            Stack<double> Values = new Stack<double>();
+ 
+            Stack<string> Operators = new Stack<string>();
 
-            // Stack for numbers: 'values'  
-            Stack<double> values = new Stack<double>();
-
-            // Stack for Operators: 'ops'  
-            Stack<string> ops = new Stack<string>();
-
-            for (int i = 0; i < tokens.Length; i++)
+            for (int i = 0; i < Tokens.Length; i++)
             {
-
-                // Current token is a number, push it to stack for numbers  
-                if (tokens[i].Equals(""))
+                if (Tokens[i].Equals(""))
                     continue;
 
-                // Current token is an opening brace, push it to 'ops'  
-                if (tokens[i].Equals("("))
-                {
-                    ops.Push(tokens[i]);
-                }
-
-                // Closing brace encountered, solve entire brace  
-                else if (tokens[i].Equals(")"))
+                if (Tokens[i].Equals("("))
+                    Operators.Push(Tokens[i]);
+               
+                else if (Tokens[i].Equals(")"))
                 {
                     
-                    while (!ops.Peek().Equals("("))
-                    {
-                        values.Push(applyOp(ops.Pop(), values.Pop(), values.Pop()));
-                        
-                    }
-                    
-                    ops.Pop();
+                    while (!Operators.Peek().Equals("("))
+                        Values.Push(ApplyOperations(Operators.Pop(), Values.Pop(), Values.Pop()));
+                    Operators.Pop();
                 }
 
-                // Current token is an operator.  
-                else if (tokens[i].Equals("+") || tokens[i].Equals("-") || tokens[i].Equals("*") || tokens[i].Equals("/") || tokens[i].Equals("^") || tokens[i].Equals("%"))
+                else if (Tokens[i].Equals("+") || Tokens[i].Equals("-") || Tokens[i].Equals("*") || Tokens[i].Equals("/") || Tokens[i].Equals("^") || Tokens[i].Equals("%") || Tokens[i].Equals("Sin") || Tokens[i].Equals("Cos") || Tokens[i].Equals("Tan") || Tokens[i].Equals("Log") || Tokens[i].Equals("Log10") || Tokens[i].Equals("1/x"))
                 {
-                    // While top of 'ops' has same or greater precedence to current  
-                    // token, which is an operator. Apply operator on top of 'ops'  
-                    // to top two elements in values stack  
-                    while (ops.Count > 0 && hasPrecedence(tokens[i], ops.Peek()))
+                    while (Operators.Count > 0 && HasPrecedence(Tokens[i], Operators.Peek()))
                     {
-                        values.Push(applyOp(ops.Pop(), values.Pop(), values.Pop()));
+                        if (IsUnary(Operators.Peek()))
+                            Values.Push(applyOp(Operators.Pop(), Values.Pop()));
+                        else
+                            Values.Push(ApplyOperations(Operators.Pop(), Values.Pop(), Values.Pop()));
                     }
 
-                    // Push current token to 'ops'.  
-                    ops.Push(tokens[i]);
+                    Operators.Push(Tokens[i]);
                 }
                 else
                 {
-                    values.Push(double.Parse(tokens[i]));
+                    Values.Push(double.Parse(Tokens[i]));
                 }
             }
-
-            // Entire expression has been parsed at this point, apply remaining  
-            // ops to remaining values  
-            while (ops.Count > 0)
+            while (Operators.Count > 0)
             {
-                values.Push(applyOp(ops.Pop(), values.Pop(), values.Pop()));
+                if (IsUnary(Operators.Peek()))
+                    Values.Push(applyOp(Operators.Pop(), Values.Pop()));
+                else
+                    Values.Push(ApplyOperations(Operators.Pop(), Values.Pop(), Values.Pop()));
             }
-
-            // Top of 'values' contains result, return it  
-                double result = values.Pop();
-            if (values.Any())
+            double result = Values.Pop();
+            if (Values.Any())
                 throw new FormatException("Invalid Exception");
             else
                 return result;
         }
 
-        // Returns true if 'op2' has higher or same precedence as 'op1',  
-        // otherwise returns false.  
-        public static bool hasPrecedence(string op1, string op2)
+        public static bool HasPrecedence(string operator1, string operator2)
         {
-            if (op2.Equals("(") || op2.Equals(")"))
-            {
+            if (operator2.Equals("(") || operator2.Equals(")"))
                 return false;
-            }
-            if (op1.Equals("^") && (op2.Equals("*") || op2.Equals("/") || op2.Equals("+") || op2.Equals("-")))
-            {
+
+            if ((operator1.Equals("^") || operator1.Equals("Sin") || operator1.Equals("Cos") || operator1.Equals("Tan") || operator1.Equals("Log") || operator1.Equals("Log10") || operator1.Equals("1/x") )&& (operator2.Equals("*") || operator2.Equals("/") || operator2.Equals("+") || operator2.Equals("-")))
                 return false;
-            }
-            if ((op1.Equals("*") || op1.Equals("/") || op1.Equals("%") && (op2.Equals("+") || op2.Equals("-"))))
-            {
+
+            if ((operator1.Equals("*") || operator1.Equals("/") || operator1.Equals("%")) && (operator2.Equals("+") || operator2.Equals("-")))
                 return false;
-            }
+
             else
-            {
                 return true;
-            }
+            
         }
 
-        // A utility method to apply an operator 'op' on operands 'a'   
-        // and 'b'. Return the result.  
-        public static double applyOp(string op, double b, double a)
+        public static double ApplyOperations(string operators, double number2, double number1)
         {
             ArithmeticOperations arithmeticOperations = new ArithmeticOperations();
-            switch (op)
+            switch (operators)
             {
                 case "+":
-                    return arithmeticOperations.Add(a, b);
+                    return arithmeticOperations.Addition(number1, number2);
                 case "-":
-                    return arithmeticOperations.Subtract(a, b);
+                    return arithmeticOperations.Subtract(number1, number2);
                 case "*":
-                    return arithmeticOperations.Multiply(a, b);
+                    return arithmeticOperations.Multiply(number1, number2);
                 case "/":
-                    return arithmeticOperations.Divide(a,b);
+                    return arithmeticOperations.Divide(number1,number2);
                 case "^":
-                    return arithmeticOperations.Exponent(a, b);
+                    return arithmeticOperations.Exponent(number1, number2);
                 case "%":
-                    return arithmeticOperations.Percentage(a, b);
+                    return arithmeticOperations.Percentage(number1, number2);
 
             }
             return 0;
+        }
+        public static double applyOp(string operators, double number1)
+        {
+            switch (operators)
+            {
+                case "Sin":
+                    return Math.Sin(number1);
+                case "Cos":
+                    return Math.Cos(number1);
+                case "Tan":
+                    return Math.Tan(number1);
+                case "Log":
+
+                    return Math.Log10(number1);
+                case "Ln":
+                    return Math.Log(number1);
+                case "1/x":
+                    if (number1 == 0)
+                        throw new ArithmeticException();
+                    return 1 / number1;
+
+            }
+            return 0;
+        }
+        public bool IsUnary(string operators)
+        {
+            if (operators.Equals("Sin") || operators.Equals("Cos") || operators.Equals("Tan") || operators.Equals("Log") || operators.Equals("Ln") || operators.Equals("1/x"))
+                return true;
+            return false;
         }
     }
 }
