@@ -392,7 +392,7 @@ namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
             buttonEquals.TabIndex = 19;
             buttonEquals.Text = "=";
             buttonEquals.UseVisualStyleBackColor = false;
-            buttonEquals.Click += new System.EventHandler(button17_Click);
+            buttonEquals.Click += new System.EventHandler(onEqualsClick);
             // 
             // buttonNine
             // 
@@ -672,7 +672,7 @@ namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
 
         }
 
-        private void button17_Click(object sender, EventArgs e)
+        private void onEqualsClick(object sender, EventArgs e)
         {
             result = 0;
             flag = true;

@@ -17,15 +17,15 @@ namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
  
             Stack<string> Operators = new Stack<string>();
 
-            for (int i = 0; i < Tokens.Length; i++)
+            for (int index = 0; index < Tokens.Length; index++)
             {
-                if (Tokens[i].Equals(""))
+                if (Tokens[index].Equals(""))
                     continue;
 
-                if (Tokens[i].Equals("("))
-                    Operators.Push(Tokens[i]);
+                if (Tokens[index].Equals("("))
+                    Operators.Push(Tokens[index]);
                
-                else if (Tokens[i].Equals(")"))
+                else if (Tokens[index].Equals(")"))
                 {
                     
                     while (!Operators.Peek().Equals("("))
@@ -33,9 +33,9 @@ namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
                     Operators.Pop();
                 }
 
-                else if (Tokens[i].Equals("+") || Tokens[i].Equals("-") || Tokens[i].Equals("*") || Tokens[i].Equals("/") || Tokens[i].Equals("^") || Tokens[i].Equals("%") || Tokens[i].Equals("Sin") || Tokens[i].Equals("Cos") || Tokens[i].Equals("Tan") || Tokens[i].Equals("Log") || Tokens[i].Equals("Log10") || Tokens[i].Equals("1/x"))
+                else if (Tokens[index].Equals("+") || Tokens[index].Equals("-") || Tokens[index].Equals("*") || Tokens[index].Equals("/") || Tokens[index].Equals("^") || Tokens[index].Equals("%") || Tokens[index].Equals("Sin") || Tokens[index].Equals("Cos") || Tokens[index].Equals("Tan") || Tokens[index].Equals("Log") || Tokens[index].Equals("Log10") || Tokens[index].Equals("1/x"))
                 {
-                    while (Operators.Count > 0 && HasPrecedence(Tokens[i], Operators.Peek()))
+                    while (Operators.Count > 0 && HasPrecedence(Tokens[index], Operators.Peek()))
                     {
                         if (IsUnary(Operators.Peek()))
                             Values.Push(applyOp(Operators.Pop(), Values.Pop()));
@@ -43,11 +43,11 @@ namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
                             Values.Push(ApplyOperations(Operators.Pop(), Values.Pop(), Values.Pop()));
                     }
 
-                    Operators.Push(Tokens[i]);
+                    Operators.Push(Tokens[index]);
                 }
                 else
                 {
-                    Values.Push(double.Parse(Tokens[i]));
+                    Values.Push(double.Parse(Tokens[index]));
                 }
             }
             while (Operators.Count > 0)
@@ -80,46 +80,46 @@ namespace Grapecity.Internship.Assignment.Calculator.WindowsForm
             
         }
 
-        public static double ApplyOperations(string operators, double number2, double number1)
+        public static double ApplyOperations(string operators, double secondNumber, double firstNumber)
         {
             ArithmeticOperations arithmeticOperations = new ArithmeticOperations();
             switch (operators)
             {
                 case "+":
-                    return arithmeticOperations.Addition(number1, number2);
+                    return arithmeticOperations.Addition(firstNumber, secondNumber);
                 case "-":
-                    return arithmeticOperations.Subtract(number1, number2);
+                    return arithmeticOperations.Subtract(firstNumber, secondNumber);
                 case "*":
-                    return arithmeticOperations.Multiply(number1, number2);
+                    return arithmeticOperations.Multiply(firstNumber, secondNumber);
                 case "/":
-                    return arithmeticOperations.Divide(number1,number2);
+                    return arithmeticOperations.Divide(firstNumber,secondNumber);
                 case "^":
-                    return arithmeticOperations.Exponent(number1, number2);
+                    return arithmeticOperations.Exponent(firstNumber, secondNumber);
                 case "%":
-                    return arithmeticOperations.Percentage(number1, number2);
+                    return arithmeticOperations.Percentage(firstNumber, secondNumber);
 
             }
             return 0;
         }
-        public static double applyOp(string operators, double number1)
+        public static double applyOp(string operators, double firstNumber)
         {
             switch (operators)
             {
                 case "Sin":
-                    return Math.Sin(number1);
+                    return Math.Sin(firstNumber);
                 case "Cos":
-                    return Math.Cos(number1);
+                    return Math.Cos(firstNumber);
                 case "Tan":
-                    return Math.Tan(number1);
+                    return Math.Tan(firstNumber);
                 case "Log":
 
-                    return Math.Log10(number1);
+                    return Math.Log10(firstNumber);
                 case "Ln":
-                    return Math.Log(number1);
+                    return Math.Log(firstNumber);
                 case "1/x":
-                    if (number1 == 0)
+                    if (firstNumber == 0)
                         throw new ArithmeticException();
-                    return 1 / number1;
+                    return 1 / firstNumber;
 
             }
             return 0;
