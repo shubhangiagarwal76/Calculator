@@ -9,7 +9,7 @@ namespace Grapecity.Internship.Assignment.Calculator.ConsoleApp
 {
     public class ResultCalculation
     {
-        ArithmeticOperations operations = new ArithmeticOperations();
+        ScientificOperations operations = new ScientificOperations();
         double Number1, Number2;
         public double Result
         {
